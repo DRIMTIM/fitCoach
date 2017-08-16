@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Create a Client
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form [formGroup]="clientCreateForm" (submit)="clientCreate()" novalidate>
+        <ion-item>
+            <ion-label stacked>Name</ion-label>
+            <ion-input formControlName="name" type="text"
+                       placeholder="What's your client's name?"
+                       [class.invalid]="!clientCreateForm.controls.name.valid && clientCreateForm.controls.name.dirty">
+            </ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!clientCreateForm.controls.name.valid && clientCreateForm.controls.name.dirty">
+            <p>Hey, you need to enter the name.</p>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input formControlName="email" type="email"
+                       placeholder="Your client's email address"
+                       [class.invalid]="!clientCreateForm.controls.email.valid && clientCreateForm.controls.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!clientCreateForm.controls.email.valid && clientCreateForm.controls.email.dirty">
+            <p>Please enter a valid email.</p>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Starting Weight</ion-label>
+            <ion-input formControlName="startingWeight" type="number"
+                       placeholder="Your client's starting weight"
+                       [class.invalid]="!clientCreateForm.controls.startingWeight.valid && clientCreateForm.controls.startingWeight.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message"
+                  *ngIf="!clientCreateForm.controls.startingWeight.valid && clientCreateForm.controls.startingWeight.dirty">
+            <p>It needs to be a number.</p>
+        </ion-item>
+        <button ion-button block type="submit"
+                [disabled]="!clientCreateForm.valid">
+            ADD NEW CLIENT
+        </button>
+    </form>
+</ion-content>

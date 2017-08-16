@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>ClientList</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-list>
+        <button ion-item *ngFor="let client of clientList | async"
+                (click)="goToClientDetail(client.$key)">
+            {{ client.fullName }} started at {{ client.startingWeight }}
+        </button>
+    </ion-list>
+</ion-content>
